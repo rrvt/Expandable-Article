@@ -73,6 +73,3 @@ Robert R. Van Tuyl, romeo romeo victor tango alpha tango sam whisky delta echo d
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-
-
-
