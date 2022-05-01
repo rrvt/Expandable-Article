@@ -45,7 +45,7 @@ private:
 
 class StoreP;
 typedef IterT<StoreP, Words> StorePIter;
-typedef RcdPtrT<Words> WordsP;
+typedef DatumPtrT<Words> WordsP;
 
 
 class StoreP {

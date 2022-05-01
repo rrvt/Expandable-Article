@@ -15,6 +15,7 @@ enum Commands {Display, Sort, Append, LoadSorted, IterDisplay, BSearch, LinearSr
 static String commands[] = {_T("Display"),
                             _T("Sort"),
                             _T("Append"),
+
                             _T("LoadSorted"),
                             _T("IterDisplay"),
                             _T("BSearch"),
@@ -25,9 +26,6 @@ static String commands[] = {_T("Display"),
                             _T("BSearchP"),
                             _T("LinearSrchP")
                              };
-#if 0
-                             _T(""),
-#endif
 
 
 static void linearSrch();
@@ -85,19 +83,19 @@ char ch;
       }
 
     switch (j) {
-      case Display    : store.display();               break;
-      case Sort       : store.sort(); store.display(); break;
+      case Display    : store.display();  break;
+      case Sort       : store.sort();
       case Append     :
-      case LoadSorted : store.display();               break;
-      case IterDisplay: store.display2();              break;
-      case LinearSrch : linearSrch();                  break;
-      case BSearch    : binarySrch();                  break;
+      case LoadSorted : store.display();  break;
+      case IterDisplay: store.display2(); break;
+      case LinearSrch : linearSrch();     break;
+      case BSearch    : binarySrch();     break;
 
       case LoadStoreP :
-      case LoadSortedP: storeP.display();              break;
-      case BSearchP   : binarySrchP();                 break;
-      case LinearSrchP: linearSrchP();                 break;
-      default         : help();                        break;
+      case LoadSortedP: storeP.display(); break;
+      case BSearchP   : binarySrchP();    break;
+      case LinearSrchP: linearSrchP();    break;
+      default         : help();           break;
       }
     }
   }

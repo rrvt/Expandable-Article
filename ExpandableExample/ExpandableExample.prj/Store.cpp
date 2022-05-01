@@ -48,7 +48,9 @@ Random rand(213);
       Datum dtm;
       ulong r = ulong(rand.next() * 1000.0);
 
-      dtm.key = r * 100 + i++;   dtm.line = line.trimRight();   data += dtm;
+      dtm.key = r * 100 + i++;   dtm.line = line.trimRight();
+
+      data += dtm;
       }
     }
 
@@ -71,7 +73,9 @@ Random rand(213);
       Datum dtm;
       ulong r = ulong(rand.next() * 1000.0);
 
-      dtm.key = r * 100 + i++; dtm.line = line.trimRight();   data = dtm;
+      dtm.key = r * 100 + i++; dtm.line = line.trimRight();
+
+      data = dtm;
       }
     }
 
@@ -100,7 +104,7 @@ String    s;
   for (dtm = iter(); dtm; dtm = iter++) {
     s.format(_T("%3i/%5i: "), iter.index(),  dtm->key);
 
-    wcout << s.str() << dtm->line.str();
+    wcout << s.str() << dtm->line.str() << endl;
     }
   }
 
