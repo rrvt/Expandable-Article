@@ -51,6 +51,10 @@ This version was created with Visual Studion 2022.  It was compiled with the fol
 
 ## Updates
 
+### Update 6/27/23
+
+Library Updates.
+
 ### Update 4/30/22
 
 Moved the example to Win11 and Visual Studio 2022.  Rewrote the article to be more like a tutorial, one

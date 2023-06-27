@@ -1,7 +1,7 @@
 // ToolBar Combo Box
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "TBComboBox.h"
 #include "TBBtnCtx.h"
 
@@ -18,7 +18,7 @@ void TBComboBox::install(TBBtnCtx& ctx) {
 
 
 bool TBComboBox::addItems(uint id, const CbxItem* items, int noItems, TBBtnCtx& ctx, bool sorted) {
-TBComboBox* cbx = TBComboBox::get(id);    if (!cbx || !items) return false;
+TBComboBox* cbx = TBComboBox::get(id);    if (!cbx || !items || !noItems) return false;
 
   cbx->addItems(items, noItems, ctx, sorted);   cbx->setDim(ctx);   return true;
   }
@@ -133,8 +133,10 @@ TBComboBox* cbx = TBComboBox::get(id);    if (!cbx) return false;
   }
 
 
-TBComboBox* TBComboBox::get(uint id)
-                              {try {return (TBComboBox*) GetByCmd((uint) id);}  catch (...) {return 0;}}
+TBComboBox* TBComboBox::get(uint id) {
+  try {return (TBComboBox*) GetByCmd((uint) id);}
+  catch (...) {return 0;}
+  }
 
 
 // Returns current selection of if none fail

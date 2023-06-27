@@ -1,10 +1,10 @@
 // CalibDspPrtDlg.cpp : implementation file
 //
 
-#include "stdafx.h"
+#include "pch.h"
 #include "CalibDspPrtDlg.h"
 #include "CApp.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "IniFile.h"
 #include "Resource.h"
 #include "CScrView.h"

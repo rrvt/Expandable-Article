@@ -97,7 +97,7 @@
         CaptureOutputWith="ProcessBuffer"
         RunFromDir="%rw"
         ClearProcessBuffer="1">
-        <Exec CmdLine='"%o"'/>
+        <Exec CmdLine='"%o" Display'/>
       </Target>
     </Menu>
   </Config>
@@ -192,7 +192,7 @@
         CaptureOutputWith="ProcessBuffer"
         RunFromDir="%rw"
         ClearProcessBuffer="1">
-        <Exec CmdLine='"%o"'/>
+        <Exec CmdLine='"%o" Display'/>
       </Target>
     </Menu>
   </Config>

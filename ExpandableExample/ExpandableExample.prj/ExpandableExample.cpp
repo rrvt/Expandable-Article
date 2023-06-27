@@ -7,7 +7,7 @@
 #include "WinSDKVer.h"
 
 
-static TCchar* filePath = _T("..\\Data\\DataFile.txt");
+static TCchar* filePath = _T("..\\ExampleData\\DataFile.txt");
 
 enum Commands {Display, Sort, Append, LoadSorted, IterDisplay, BSearch, LinearSrch,
                LoadStoreP, LoadSortedP, BSearchP, LinearSrchP};

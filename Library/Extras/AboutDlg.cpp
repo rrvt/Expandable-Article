@@ -1,9 +1,9 @@
 // About Dialog
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "AboutDlg.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "Resources.h"
 
 
@@ -56,3 +56,5 @@ bool         rslt;
   return TRUE;
   }
 
+BEGIN_MESSAGE_MAP(AboutDlg, CDialogEx)
+END_MESSAGE_MAP()

@@ -2,7 +2,7 @@
 
 
 #pragma once
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "Resource.h"
 
 
@@ -22,5 +22,7 @@ enum { IDD = IDD_AboutBox };     // Dialog Data
 protected:
 
   virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-  };
+public:
+    DECLARE_MESSAGE_MAP()
+};
 
