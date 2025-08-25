@@ -13,28 +13,29 @@ typedef AccIterT<AccFldDsc> FldIter;
 class AccFldDsc : public AccRcdSet {
 DECLARE_DYNAMIC(AccFldDsc)
 public:
-CString tblQualifier;
-CString tblOwner;
-CString tblName;
-CString name;
+Cstring tblQualifier;
+Cstring tblOwner;
+Cstring tblName;
+Cstring name;
 int     type;
-CString typeName;
+Cstring typeName;
 long    precision;
 long    length;
 int     scale;
 int     radix;
 int     nullable;
-CString remarks;
+Cstring remarks;
 
   AccFldDsc();
  ~AccFldDsc() {close();}
 
-          bool open(TCchar* path, TCchar* tableName);
-          void close() {AccRcdSet::close();}
+              void clear();
 
+              bool open(TCchar* path, TCchar* tableName);
+              void close() {AccRcdSet::close();}
 private:
 
-  virtual void DoFieldExchange(CFieldExchange*);
+  virtual     void DoFieldExchange(CFieldExchange*);
 
   AccFldDsc* moveFirst() {MoveFirst();  return IsEOF() ? 0 : this;}
   AccFldDsc* moveNext()  {MoveNext();   return IsEOF() ? 0 : this;}
@@ -45,27 +46,4 @@ private:
 
 
 extern AccFldDsc accFldDsc;
-
-
-#if 0
-class AccFldDscIter {
-
-AccFldDsc& tbl;
-
-public:
-
-  enum Dir {Fwd, Rev};
-
-  AccFldDscIter(AccFldDsc& table) : tbl(table) { }
-
-  AccFldDsc* operator() (Dir dir = Fwd) {return dir == Fwd ? tbl.moveFirst() : tbl.moveLast();}
-  AccFldDsc* operator++ (int)           {return tbl.moveNext();}
-  AccFldDsc* operator-- (int)           {return tbl.movePrev();}
-
-private:
-
-  AccFldDscIter() : tbl(*(AccFldDsc*)0) { }
-  };
-#endif
-
 

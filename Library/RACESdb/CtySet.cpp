@@ -6,17 +6,17 @@
 #include "AccessDB.h"
 
 
-CtySet::CtySet() : AccRcdSet(accessDB.db()), cityStateID(0), city(), state(),
-          zip() { }
+CtySet::CtySet() : AccRcdSet(accessDB.db()),
+                   cityStateID(0), city(), state(), zip() { }
 
 
 bool CtySet::open(TCchar* path) {
 
-  opened = false;
+  if (opened) close();
 
   if (!accessDB.isOpen() && !accessDB.open(path)) return false;
 
-  SetState(CRecordset::dynaset, NULL, CRecordset::none);          // Cache state info and allocate hstmt
+  SetState(CRecordset::dynaset, NULL, CRecordset::none);    // Cache state info and allocate hstmt
 
   if (!AllocHstmt()) return false;
 
@@ -27,8 +27,6 @@ bool CtySet::open(TCchar* path) {
     try {if (!Open(CRecordset::snapshot, _T("CityState"), CRecordset::none)) return false;}
     catch(...) {close(); return false;}
     }
-
-  AllocRowset();          // Allocate memory and cache info
 
   return opened = true;
   }
@@ -44,20 +42,39 @@ CtySet* set = &rcd;
   }
 
 
-bool CtySet::edit()
-  {if (!opened) return false;   try {Edit(); return true;} catch(...) {return false;}}
+bool CtySet::edit() {
+  if (!opened) return false;
+
+  try {Edit(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool CtySet::addNew()
-  {if (!opened) return false;   try {AddNew(); return true;} catch(...) {return false;}}
+bool CtySet::addNew() {
+  if (!opened) return false;
+
+  try {AddNew(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool CtySet::update()
-  {if (!opened) return false;   try {Update(); movePrev(); return true;} catch(...) {return false;}}
+bool CtySet::update() {
+
+  if (!opened) return false;
+
+  try {if (!Update()) return false;   movePrev();}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+
+  return true;
+  }
 
 
 bool CtySet::remove()
-  {if (!opened) return false;   try {Delete(); movePrev(); return true;} catch(...) {return false;}}
+  {if (!opened) return false;
+
+  try {Delete(); movePrev(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
 void CtySet::DoFieldExchange(CFieldExchange* pFX) {

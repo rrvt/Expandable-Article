@@ -32,9 +32,9 @@ LPSTR   fieldName;
   // Allocate buffer and get the ODBC meta data.
   m_rgODBCFieldInfos = new CODBCFieldInfo[m_nResultCols];
 
-  fieldName = new char[MAX_FNAME_LEN + 1];              // Temporarary storage for non-UNICODE name.
+  fieldName = new char[MAX_FNAME_LEN + 1];            // Temporarary storage for non-UNICODE name.
 
-  for (WORD i = 0; i < GetODBCFieldCount(); i++) {      // Get the field info for each field.
+  for (WORD i = 0; i < GetODBCFieldCount(); i++) {    // Get the field info for each field.
 
     AFX_ODBC_CALL(
       ::SQLDescribeCol(m_hstmt, i + 1,
@@ -73,9 +73,14 @@ void AccRcdSet::CheckRowsetError(RETCODE nRetCode) {
 
 void AccRcdSet::close() {
 
-  CRecordset::FreeRowset();   CRecordset::Close();
+  if (!opened) return;
 
   if (m_rgODBCFieldInfos) {delete[] m_rgODBCFieldInfos;   m_rgODBCFieldInfos = 0;}
+  if (m_rgRowStatus)      {delete[] m_rgRowStatus;        m_rgRowStatus      = 0;}
+
+  try {Close();} catch (...) { }
+
+  try {if (m_rgRowStatus) FreeRowset();   if (m_rgFieldInfos) FreeDataCache();} catch (...) { }
 
   opened = false;
   }

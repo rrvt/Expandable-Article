@@ -2,8 +2,8 @@
 
 
 #pragma once
+//#include "ManagePrinter.h"
 #include "ResourceExtra.h"
-#include "PrintMgr.h"
 
 
 // OptionsDlg dialog
@@ -51,7 +51,7 @@ CEdit     prtSclCtrl;
 
 protected:
 
-  virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+  virtual void DoDataExchange(CDataExchange* pDX);
 
   DECLARE_MESSAGE_MAP()
 

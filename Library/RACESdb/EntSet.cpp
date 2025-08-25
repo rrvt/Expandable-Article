@@ -6,24 +6,19 @@
 #include "AccessDB.h"
 
 
-EntSet::EntSet() : AccRcdSet(accessDB.db()), entityID(0), firstName(), middleInitial(),
-          lastName(), suffix(),
-          addrID(0),
-          cityStID(0),
-          addrIsPO(false),
-          locationZip(),
-          eMail(),
-          phone1(),
-          phone2() { }
+EntSet::EntSet() : AccRcdSet(accessDB.db()),
+                   entityID(0), firstName(), middleInitial(), lastName(),    suffix(),
+                   addrID(0),   cityStID(0), addrIsPO(false), locationZip(), eMail(),
+                   phone1(),    phone2() { }
 
 
 bool EntSet::open(TCchar* path) {
 
-  opened = false;
+  if (opened) close();
 
   if (!accessDB.isOpen() && !accessDB.open(path)) return false;
 
-  SetState(CRecordset::dynaset, NULL, CRecordset::none);          // Cache state info and allocate hstmt
+  SetState(CRecordset::dynaset, NULL, CRecordset::none);    // Cache state info and allocate hstmt
 
   if (!AllocHstmt()) return false;
 
@@ -34,8 +29,6 @@ bool EntSet::open(TCchar* path) {
     try {if (!Open(CRecordset::snapshot, _T("Entity"), CRecordset::none)) return false;}
     catch(...) {close(); return false;}
     }
-
-  AllocRowset();          // Allocate memory and cache info
 
   return opened = true;
   }
@@ -51,20 +44,39 @@ EntSet* set = &rcd;
   }
 
 
-bool EntSet::edit()
-  {if (!opened) return false;   try {Edit(); return true;} catch(...) {return false;}}
+bool EntSet::edit() {
+  if (!opened) return false;
+
+  try {Edit(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool EntSet::addNew()
-  {if (!opened) return false;   try {AddNew(); return true;} catch(...) {return false;}}
+bool EntSet::addNew() {
+  if (!opened) return false;
+
+  try {AddNew(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool EntSet::update()
-  {if (!opened) return false;   try {Update(); movePrev(); return true;} catch(...) {return false;}}
+bool EntSet::update() {
+
+  if (!opened) return false;
+
+  try {if (!Update()) return false;   movePrev();}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+
+  return true;
+  }
 
 
 bool EntSet::remove()
-  {if (!opened) return false;   try {Delete(); movePrev(); return true;} catch(...) {return false;}}
+  {if (!opened) return false;
+
+  try {Delete(); movePrev(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
 void EntSet::DoFieldExchange(CFieldExchange* pFX) {

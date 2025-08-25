@@ -3,8 +3,8 @@
 
 #include "pch.h"
 #include "AboutDlg.h"
+#include "ResourceData.h"
 #include "ResourceExtra.h"
-#include "Resources.h"
 
 
 void AboutDlg::DoDataExchange(CDataExchange* pDX) {CDialogEx::DoDataExchange(pDX);}
@@ -32,9 +32,9 @@ bool         rslt;
   #ifdef WinXP
     nameVer += _T(" (WinXP)");
   #elif defined UNICODE
-    nameVer += _T(" (UNI 7)");
+    nameVer += _T(" (Unicode)");
   #else
-    nameVer += _T(" (Win 7)");
+    nameVer += _T(" (Win 11)");
   #endif
 
   if (!res.getVersion(version)) version = _T("0/0/0");
@@ -57,4 +57,9 @@ bool         rslt;
   }
 
 BEGIN_MESSAGE_MAP(AboutDlg, CDialogEx)
+  ON_BN_CLICKED(IDOK,       &AboutDlg::onOk)
 END_MESSAGE_MAP()
+
+
+void AboutDlg::onOk() {CDialogEx::OnOK();}
+

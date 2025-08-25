@@ -17,8 +17,11 @@ public:
 String address1;
 String address2;
 
-  AdrRcd() : id(0), dirty(false), remove(false) { }
+  AdrRcd();
+  AdrRcd(AdrRcd& r) {copy(r);}
  ~AdrRcd() { }
+
+  void clear();
 
   void load(AdrSet* set);
 
@@ -26,11 +29,14 @@ String address2;
 
   void setDirty()  {dirty = true;}
   void setRemove() {dirty = true; remove = true;}
+  bool isRemoved() {return remove;}
 
   void store(AdrSet& set);
   void add(  AdrSet& set);
 
   void display();
+
+  AdrRcd& operator= (AdrRcd& r) {copy(r); return *this;}
 
   // Needed for Insertion Sort of Primary Key
   bool operator== (AdrRcd& r) {return id == r.id;}
@@ -49,13 +55,14 @@ String address2;
 private:
 
   void copy(AdrSet& set);
+  void copy(AdrRcd& r);
 
   friend class AdrTbl;
   };
 
 
 // Record Pointer Declaration, see ExpandableP.h for details
-typedef DatumPtrT<AdrRcd> AdrRcdP;
+typedef DatumPtrT<AdrRcd, int> AdrRcdP;
 
 // Iterator Declaration, see IterT.h for details
 class AdrTbl;
@@ -64,7 +71,7 @@ typedef IterT<AdrTbl, AdrRcd> AdrIter;
 
 class AdrTbl {
 
-ExpandableP<AdrRcd, AdrRcdP, 2> data;
+ExpandableP<AdrRcd, int, AdrRcdP, 2> data;
 
 int    maxID;
 AdrSet adrSet;
@@ -84,7 +91,7 @@ String name;
 
   bool store(TCchar* path);     // Store/Del entities marked
 
-  AdrRcd* find(int id) {return data.bSearch(id);}
+  AdrRcd* find(int id) {return id ? data.bSearch(id) : 0;}
   AdrRcd* find(TCchar* address1, TCchar* address2);
 
   virtual void display();

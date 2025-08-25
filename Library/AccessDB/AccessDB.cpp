@@ -1,4 +1,5 @@
-// Open an Access Database for the purposes of determining the table names and fields within the tables
+// Open an Access Database for the purposes of determining the table names and fields within the
+// tables
 
 
 #include "pch.h"
@@ -33,6 +34,6 @@ DWORD  options;
 
 // Closes the open database
 
-void AccessDB::close() {if (opened) {Close();   opened = false;}}
+void AccessDB::close() {if (opened) {Free();   Close();}   opened = false;}
 
 

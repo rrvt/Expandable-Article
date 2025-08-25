@@ -6,16 +6,17 @@
 #include "AccessDB.h"
 
 
-AdrSet::AdrSet() : AccRcdSet(accessDB.db()), addressID(0), address1(), address2() { }
+AdrSet::AdrSet() : AccRcdSet(accessDB.db()),
+                   addressID(0), address1(), address2() { }
 
 
 bool AdrSet::open(TCchar* path) {
 
-  opened = false;
+  if (opened) close();
 
   if (!accessDB.isOpen() && !accessDB.open(path)) return false;
 
-  SetState(CRecordset::dynaset, NULL, CRecordset::none);          // Cache state info and allocate hstmt
+  SetState(CRecordset::dynaset, NULL, CRecordset::none);    // Cache state info and allocate hstmt
 
   if (!AllocHstmt()) return false;
 
@@ -26,8 +27,6 @@ bool AdrSet::open(TCchar* path) {
     try {if (!Open(CRecordset::snapshot, _T("Address"), CRecordset::none)) return false;}
     catch(...) {close(); return false;}
     }
-
-  AllocRowset();          // Allocate memory and cache info
 
   return opened = true;
   }
@@ -43,20 +42,39 @@ AdrSet* set = &rcd;
   }
 
 
-bool AdrSet::edit()
-  {if (!opened) return false;   try {Edit(); return true;} catch(...) {return false;}}
+bool AdrSet::edit() {
+  if (!opened) return false;
+
+  try {Edit(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool AdrSet::addNew()
-  {if (!opened) return false;   try {AddNew(); return true;} catch(...) {return false;}}
+bool AdrSet::addNew() {
+  if (!opened) return false;
+
+  try {AddNew(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool AdrSet::update()
-  {if (!opened) return false;   try {Update(); movePrev(); return true;} catch(...) {return false;}}
+bool AdrSet::update() {
+
+  if (!opened) return false;
+
+  try {if (!Update()) return false;   movePrev();}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+
+  return true;
+  }
 
 
 bool AdrSet::remove()
-  {if (!opened) return false;   try {Delete(); movePrev(); return true;} catch(...) {return false;}}
+  {if (!opened) return false;
+
+  try {Delete(); movePrev(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
 void AdrSet::DoFieldExchange(CFieldExchange* pFX) {

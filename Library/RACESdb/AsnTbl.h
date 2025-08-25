@@ -17,8 +17,11 @@ public:
 String aPKey;
 String txt;
 
-  AsnRcd() : id(0), dirty(false), remove(false) { }
+  AsnRcd();
+  AsnRcd(AsnRcd& r) {copy(r);}
  ~AsnRcd() { }
+
+  void clear();
 
   void load(AsnSet* set);
 
@@ -26,11 +29,14 @@ String txt;
 
   void setDirty()  {dirty = true;}
   void setRemove() {dirty = true; remove = true;}
+  bool isRemoved() {return remove;}
 
   void store(AsnSet& set);
   void add(  AsnSet& set);
 
   void display();
+
+  AsnRcd& operator= (AsnRcd& r) {copy(r); return *this;}
 
   // Needed for Insertion Sort of Primary Key
   bool operator== (AsnRcd& r) {return id == r.id;}
@@ -49,13 +55,14 @@ String txt;
 private:
 
   void copy(AsnSet& set);
+  void copy(AsnRcd& r);
 
   friend class AsnTbl;
   };
 
 
 // Record Pointer Declaration, see ExpandableP.h for details
-typedef DatumPtrT<AsnRcd> AsnRcdP;
+typedef DatumPtrT<AsnRcd, int> AsnRcdP;
 
 // Iterator Declaration, see IterT.h for details
 class AsnTbl;
@@ -64,7 +71,7 @@ typedef IterT<AsnTbl, AsnRcd> AsnIter;
 
 class AsnTbl {
 
-ExpandableP<AsnRcd, AsnRcdP, 2> data;
+ExpandableP<AsnRcd, int, AsnRcdP, 2> data;
 
 int    maxID;
 AsnSet asnSet;
@@ -84,7 +91,7 @@ String name;
 
   bool store(TCchar* path);     // Store/Del entities marked
 
-  AsnRcd* find(int id) {return data.bSearch(id);}
+  AsnRcd* find(int id) {return id ? data.bSearch(id) : 0;}
   AsnRcd* find(TCchar* aPKey);
 
   virtual void display();

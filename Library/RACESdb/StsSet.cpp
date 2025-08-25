@@ -6,16 +6,17 @@
 #include "AccessDB.h"
 
 
-StsSet::StsSet() : AccRcdSet(accessDB.db()), stsID(0), abbreviation(), description() { }
+StsSet::StsSet() : AccRcdSet(accessDB.db()),
+                   stsID(0), abbreviation(), description() { }
 
 
 bool StsSet::open(TCchar* path) {
 
-  opened = false;
+  if (opened) close();
 
   if (!accessDB.isOpen() && !accessDB.open(path)) return false;
 
-  SetState(CRecordset::dynaset, NULL, CRecordset::none);          // Cache state info and allocate hstmt
+  SetState(CRecordset::dynaset, NULL, CRecordset::none);    // Cache state info and allocate hstmt
 
   if (!AllocHstmt()) return false;
 
@@ -26,8 +27,6 @@ bool StsSet::open(TCchar* path) {
     try {if (!Open(CRecordset::snapshot, _T("Status"), CRecordset::none)) return false;}
     catch(...) {close(); return false;}
     }
-
-  AllocRowset();          // Allocate memory and cache info
 
   return opened = true;
   }
@@ -43,20 +42,39 @@ StsSet* set = &rcd;
   }
 
 
-bool StsSet::edit()
-  {if (!opened) return false;   try {Edit(); return true;} catch(...) {return false;}}
+bool StsSet::edit() {
+  if (!opened) return false;
+
+  try {Edit(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool StsSet::addNew()
-  {if (!opened) return false;   try {AddNew(); return true;} catch(...) {return false;}}
+bool StsSet::addNew() {
+  if (!opened) return false;
+
+  try {AddNew(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
-bool StsSet::update()
-  {if (!opened) return false;   try {Update(); movePrev(); return true;} catch(...) {return false;}}
+bool StsSet::update() {
+
+  if (!opened) return false;
+
+  try {if (!Update()) return false;   movePrev();}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+
+  return true;
+  }
 
 
 bool StsSet::remove()
-  {if (!opened) return false;   try {Delete(); movePrev(); return true;} catch(...) {return false;}}
+  {if (!opened) return false;
+
+  try {Delete(); movePrev(); return true;}
+  catch(CException* e) {e->ReportError();   e->Delete();   return false;}
+  }
 
 
 void StsSet::DoFieldExchange(CFieldExchange* pFX) {

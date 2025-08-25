@@ -17,8 +17,11 @@ public:
 String key;
 String txt;
 
-  LocRcd() : id(0), dirty(false), remove(false) { }
+  LocRcd();
+  LocRcd(LocRcd& r) {copy(r);}
  ~LocRcd() { }
+
+  void clear();
 
   void load(LocSet* set);
 
@@ -26,11 +29,14 @@ String txt;
 
   void setDirty()  {dirty = true;}
   void setRemove() {dirty = true; remove = true;}
+  bool isRemoved() {return remove;}
 
   void store(LocSet& set);
   void add(  LocSet& set);
 
   void display();
+
+  LocRcd& operator= (LocRcd& r) {copy(r); return *this;}
 
   // Needed for Insertion Sort of Primary Key
   bool operator== (LocRcd& r) {return id == r.id;}
@@ -49,13 +55,14 @@ String txt;
 private:
 
   void copy(LocSet& set);
+  void copy(LocRcd& r);
 
   friend class LocTbl;
   };
 
 
 // Record Pointer Declaration, see ExpandableP.h for details
-typedef DatumPtrT<LocRcd> LocRcdP;
+typedef DatumPtrT<LocRcd, int> LocRcdP;
 
 // Iterator Declaration, see IterT.h for details
 class LocTbl;
@@ -64,7 +71,7 @@ typedef IterT<LocTbl, LocRcd> LocIter;
 
 class LocTbl {
 
-ExpandableP<LocRcd, LocRcdP, 2> data;
+ExpandableP<LocRcd, int, LocRcdP, 2> data;
 
 int    maxID;
 LocSet locSet;
@@ -84,7 +91,7 @@ String name;
 
   bool store(TCchar* path);     // Store/Del entities marked
 
-  LocRcd* find(int id) {return data.bSearch(id);}
+  LocRcd* find(int id) {return id ? data.bSearch(id) : 0;}
   LocRcd* find(TCchar* key);
 
   virtual void display();
