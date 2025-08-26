@@ -109,7 +109,6 @@ int    endN;                          // Number of items in the array that may b
 int    tblN;                          // total number of elements in the table
 Datum* tbl;                           // Pointer to a heap object which is treated as an array of
                                       // Datums
-
 public:
 
   Expandable();                                 // Constructor & destructor
@@ -137,11 +136,11 @@ public:
 
   Datum& nextData() {return (*this)[endN];}     // Return reference to next available node in array
                                                 // (at end)
+  Datum& getData(int i);                        // Returns reference to a node at index i or the
+                                                // end of the vector, allocating it if necessary
   bool   operator() (int x, Datum& d);          // Insert data at index, moving other entries out
                                                 // of the way
 
-  Datum& getData(int i);                        // Returns reference to a node at index i or the
-                                                // end of the vector, allocating it if necessary
   void   push(Datum& d) {*this += d;}           // Push node onto the end of the table
   bool   pop(Datum& d);                         // Copy the node at the end of the array into d
                                                 // and remove node from the end of the array
@@ -168,25 +167,18 @@ private:
 // Constructor
 
 template <class Datum, const int n>
-Expandable<Datum, n>::Expandable() : endN(0), tblN(n > 0 ? n : 1) {
-NewArray(Datum); tbl = AllocArray(tblN);
-}
+Expandable<Datum, n>::Expandable() : endN(0), tblN(n > 0 ? n : 1)
+                                                         {NewArray(Datum); tbl = AllocArray(tblN);}
 
 // Destructor
 
 template <class Datum, const int n>
-Expandable<Datum, n>::~Expandable() {
-  if (tbl) {NewArray(Datum);  FreeArray(tbl);}
-  tbl = 0; endN = tblN = 0;
-  }
+Expandable<Datum, n>::~Expandable()
+                         {if (tbl) {NewArray(Datum);  FreeArray(tbl);}   tbl = 0; endN = tblN = 0;}
 
 
 template <class Datum, const int n>
-void Expandable<Datum, n>::clear() {
-int i;
-
-  for (i = 0; i < endN; i++) tbl[i].~Datum();   endN = 0;
-  }
+void Expandable<Datum, n>::clear() {for (int i = 0; i < endN; i++) tbl[i].~Datum();   endN = 0;}
 
 
 

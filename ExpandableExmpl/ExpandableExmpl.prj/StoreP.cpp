@@ -47,9 +47,8 @@ title = name + _T(" Cleared");   d.probe(title);
 
     while (fil.read(line)) {
       if (sorted) {Words words;   words.load(line);   data = words;}
-      else          {Words& words = d.nextData();  words.load(line);}
-      }                                                         // nextData at the end of the array
-
+      else        {Words& words = d.nextData();  words.load(line);}
+      }                                                        // nextData at the end of the array
     }
 
   fil.close();
@@ -85,7 +84,7 @@ void StoreP::display(StorePData& d) {
 int n = d.end();
 int i;
 
-  for (i = 0; i < n; i++) {Words*& p = d[i].p;   if (p) p->display(i);}
+  for (i = 0; i < n; i++) {Words* p = d[i];   if (p) p->display(i);}
   }
 
 

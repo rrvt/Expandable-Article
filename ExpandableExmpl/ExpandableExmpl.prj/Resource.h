@@ -39,8 +39,10 @@
 #define ID_GetRefAtI                    426
 #define ID_PushPop                      427
 #define ID_DelEntry                     428
-#define ID_FindEntry                 430
-#define ID_BinarySearch                431
+#define ID_FindEntry                    430
+#define ID_BinarySearch                 431
+#define ID_Iterators                    432
+#define ID_Sort                         433
 
 #define ID_TBSaveMenu                   440
 #define ID_SaveFile                     441

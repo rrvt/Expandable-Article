@@ -91,6 +91,12 @@ private:
   void binarySearch();
   void binarySearchP();
 
+  void iterators();
+  void iteratorsP();
+
+  void sort();
+  void sortP();
+
   void wordsExmpl(Words& words);
   void datumExmpl(int key, Datum &dtm);
 
@@ -147,8 +153,8 @@ public:
 
   afx_msg void onFindEntry();
   afx_msg void onBinarySearch();
-
-
+  afx_msg void onIterators();
+  afx_msg void onSort();
 
 
 

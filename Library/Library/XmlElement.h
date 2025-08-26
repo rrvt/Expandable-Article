@@ -130,7 +130,7 @@ private:
   void copy(XmlElement& el);
 
   // returns either a pointer to data (or datum) at index i in array or zero
-  XmlBase* datum(int i) {return 0 <= i && i < nData() ? data[i].p : 0;}
+  XmlBase* datum(int i) {return 0 <= i && i < nData() ? data[i] : 0;}
 
   void     removeDatum(int i);
 

@@ -62,8 +62,8 @@ String line;
       dtm.key  = nextRandom(rand, i++);
       dtm.line = line.trimRight();
 
-      if (sorted) d  = dtm;
-      else        d += dtm;
+      if (sorted) d            = dtm;
+      else        d.nextData() = dtm;
       }
     }
 
@@ -94,6 +94,7 @@ int    i;
 
 
 static String Blanks = _T("        ");
+
 
 void Datum::display(TCchar* prefix) {
 int n = 12 - _tcslen(prefix);

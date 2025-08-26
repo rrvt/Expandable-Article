@@ -36,7 +36,7 @@ int i;
   lng = line.length();
 
   for (i = 0; i < n; i++) {
-    XmlBase& p = *data[i].p;
+    XmlBase& p = *data[i];
 
     if (p.dtmType != ContentDtm) return false;
 
@@ -95,6 +95,7 @@ int j;
 // The free node included in the template doesn't work for multiple node sizes.  Leaves lost memory
 
 void XmlbaseP::clear() {
+XmlBase* p = *this;
 
   if (!p) return;
 
@@ -117,7 +118,7 @@ int i;
 
   upLink = el.upLink;
 
-  for (i = 0; i < n; i++) {el.data[i] = data[i];  data[i].p = 0;}
+  for (i = 0; i < n; i++) el.data[i] -= data[i];
   }
 
 

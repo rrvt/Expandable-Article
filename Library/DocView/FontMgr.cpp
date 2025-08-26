@@ -137,7 +137,7 @@ FontAttr* oldAttr;
 
   scale = fm.scale;
 
-  cur = stkX >= 0 ? data[stkX].p : 0;
+  cur = stkX >= 0 ? data[stkX] : 0;
   }
 
 

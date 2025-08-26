@@ -113,6 +113,8 @@ BEGIN_MESSAGE_MAP(ExpandableExmplDoc, CDoc)
   ON_COMMAND(      ID_DelEntry,           &onDelEntry)
   ON_COMMAND(      ID_FindEntry,          &onFindEntry)
   ON_COMMAND(      ID_BinarySearch,       &onBinarySearch)
+  ON_COMMAND(      ID_Iterators,          &onIterators)
+  ON_COMMAND(      ID_Sort,               &onSort)
 
   ON_COMMAND(      ID_TBSaveMenu,         &onSaveFile)
   ON_COMMAND(      ID_SaveFile,           &onSaveFile)
@@ -1241,6 +1243,97 @@ String     key;
   a.probe(_T("After a.find(key);"));
   display(_T("After Test a.find(key);"), a);
   }
+
+
+
+void ExpandableExmplDoc::onIterators() {
+
+  notePad.clear();
+
+  setTestTitle(_T("Binary Search"), _T("Binary Search"));
+
+  switch (expCh) {
+    case NilChoice  : messageBox(NilVersion);  break;
+    case ExpChoice  : iterators();             break;
+    case ExpPChoice : iteratorsP();            break;
+    }
+
+  display();
+  }
+
+
+
+void ExpandableExmplDoc::iterators() {
+StoreIter iter(store);           // Define iterator over data in StoreP
+Datum*    q;
+int       i = 0;
+
+  notePad << _T("data currently in store") << nCrlf;
+  displayStr();   notePad << nCrlf;
+
+  notePad << _T("Items found when iteration on storeP data") << nCrlf;
+
+  for (q = iter(); q; q = iter++) q->display();
+  }
+
+
+// Test iterator
+
+void ExpandableExmplDoc::iteratorsP() {
+StorePIter iter(storeP);           // Define iterator over data in StoreP
+Words*     q;
+int        i = 0;
+
+  notePad << _T("data currently in storeP") << nCrlf;
+  displayStr();   notePad << nCrlf;
+
+  notePad << _T("Items found when iteration on storeP data") << nCrlf;
+
+  for (q = iter(); q; q = iter++) q->display(i++);
+  }
+
+
+// Test:  qsort(&data[0], &data[data.end()-1]);
+
+void ExpandableExmplDoc::onSort() {
+
+  notePad.clear();
+
+  setTestTitle(_T("Binary Search"), _T("Binary Search"));
+
+  switch (expCh) {
+    case NilChoice  : messageBox(NilVersion);  break;
+    case ExpChoice  : sort();          break;
+    case ExpPChoice : sortP();         break;
+    }
+
+  display();
+  }
+
+
+void ExpandableExmplDoc::sort() {
+StoreData a;
+
+  store.copyData(a);
+  display(_T("data currently in a"), a);   notePad << nCrlf;
+
+  qsort(&a[0], &a[a.end()-1]);
+
+  display(_T("a after sorting"), a);   notePad << nCrlf;
+  }
+
+
+void ExpandableExmplDoc::sortP() {
+StorePData a;
+
+  storeP.copyData(a);
+  display(_T("data currently in a"), a);   notePad << nCrlf;
+
+  qsort(&a[0], &a[a.end()-1]);
+
+  display(_T("a after sorting"), a);   notePad << nCrlf;
+  }
+
 
 
 void ExpandableExmplDoc::datumExmpl(int key, Datum &dtm) {

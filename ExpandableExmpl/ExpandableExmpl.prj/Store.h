@@ -19,7 +19,7 @@ String line;                        // Line from the file
   Datum(Datum& dtm) {copy(dtm);}
  ~Datum() {clear();}
 
-  void clear() {key = 0; line.clear();}
+  void clear()   {key = 0; line.clear();}
   bool isEmpty() {return !key;}
 
   void display();
@@ -32,8 +32,8 @@ String line;                        // Line from the file
   bool operator== (Datum& dtm) {return key == dtm.key;}
 
   // Required for Qsort
-  bool operator>  (Datum& dtm) {return line >  dtm.line;}
-  bool operator<= (Datum& dtm) {return line <= dtm.line;}
+  bool operator>  (Datum& dtm) {return key >  dtm.key;}
+  bool operator<= (Datum& dtm) {return key <= dtm.key;}
 
   // Required for Binary Search
   bool     operator== (ulong key) {return this->key == key;}
@@ -92,7 +92,7 @@ private:
 
   // returns either a pointer to data (or datum) at index i in array or zero
 
-  Datum* datum(int i) {return 0 <= i && i < nData() ? &data[i] : 0;}       // or data[i].p
+  Datum* datum(int i) {return 0 <= i && i < nData() ? &data[i] : 0;}
 
   void  removeDatum(int i) {if (0 <= i && i < nData()) data.del(i);}
 

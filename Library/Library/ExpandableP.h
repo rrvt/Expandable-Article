@@ -64,7 +64,7 @@ private:
 
   // returns either a pointer to data (or datum) at index i in array or zero
 
-  Datum* datum(int i) {return 0 <= i && i < nData() ? data[i].p : 0;}
+  Datum* datum(int i) {return 0 <= i && i < nData() ? data[i] : 0;}
 
   int    nData()      {return data.end();}                // returns number of data items in array
                                                           // not necessarily private
@@ -149,19 +149,20 @@ the operations supported are:
 
 
 template<class Datum, class Key>
-struct DatumPtrT {
+class DatumPtrT {
 Datum* p;
+
+public:
 
   DatumPtrT() : p(0) { }
  ~DatumPtrT() {p = 0;}                        // The Datum is handled otherwise...
   DatumPtrT(DatumPtrT& x) {copy(x);}
 
-  void clear();
+  void clear();                               // Deallocates Datum, clears p
 
-  DatumPtrT& operator=  (DatumPtrT& x) {copy(x); return *this;}             // Copy Datum
-  DatumPtrT& operator-= (DatumPtrT& x) {p = x.p;   x.p = 0; return *this;}  // Move Datum
-
-  DatumPtrT& operator=  (Datum& d)     {copy(d);   return *this;}
+  DatumPtrT& operator=  (DatumPtrT& x) {copy(x); return *this;}          // Copy Datum in x to this
+  DatumPtrT& operator-= (DatumPtrT& x) {p = x.p; x.p = 0; return *this;} // Move Datum in x to this
+  DatumPtrT& operator=  (Datum& d)     {copy(d);   return *this;}        // Copy d to this
   DatumPtrT& operator=  (Datum* d)     {copy(*d);  return *this;}
 
   // Required for Insertion Sort, i.e. data = dtm;
@@ -188,7 +189,7 @@ Datum* p;
   bool     operator<= (Key& key) {return *p <= key;}
   bool     operator>= (Key& key) {return *p >= key;}
 
-           operator Datum*() const {return p;}
+           operator Datum*() const {return p;}              // Converts this to Datum*
 
 private:
 
@@ -520,6 +521,7 @@ void DatumPtrT<Datum, Key>::copy(DatumPtrT& x) {
 
   NewAlloc(Datum);   p = AllocNode;    *p = *x.p;
   }
+
 
 template <class Datum, class Key>
 void DatumPtrT<Datum, Key>::copy(Datum& d) {
