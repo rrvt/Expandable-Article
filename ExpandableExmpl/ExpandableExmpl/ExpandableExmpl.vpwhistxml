@@ -1,6 +1,6 @@
 <vpwhist>
 	<active_config>
-		<p n="..\ExpandableExmpl.prj\ExpandableExmpl.vpj" v=",Release|Win32"/>
+		<p n="..\ExpandableExmpl.prj\ExpandableExmpl.vpj" v=",Debug|Win32"/>
 		<p n="..\ExpandableExmpl.hlp\ExpandableExmpl.hlp.vpj" v=",Debug|Win32"/>
 		<p n="..\ExpandableExmpl.wix\ExpandableExmpl.wix.vpj" v=",Debug|x86"/>
 		<p n="..\..\Library\Library\Library.vpj" v=",Debug|Win32"/>
@@ -8,7 +8,7 @@
 	</active_config>
 	<global>
 		<p n="CurrentProject" v="..\ExpandableExmpl.prj\ExpandableExmpl.vpj"/>
-		<p n="ActiveSolutionConfig" v="Release|Win32"/>
+		<p n="ActiveSolutionConfig" v="Debug|Win32"/>
 	</global>
 	<project_dates>
 		<p n="..\ExpandableExmpl.prj\ExpandableExmpl.vcxproj" v="20250821202507524"/>
@@ -17,7 +17,7 @@
 		<p n="..\..\Library\Library\Library.vcxproj" v="20250708055346153"/>
 		<p n="..\..\Library\DocView\DocView.vcxproj" v="20250819220928174"/>
 	</project_dates>
-	<tree_expansion scroll="0">
+	<tree_expansion scroll="1">
 		<p n="..\..\Library\DocView\DocView.vcxproj" v="+@"/>
 		<p n="..\ExpandableExmpl.hlp\ExpandableExmpl.hlp.vcxproj" v="-@">
 			<p n="Help Files" v="+"/>
@@ -38,7 +38,7 @@
 		<monitor_configs>
 			<monitor_config v="0 0 2560 1440">
 				<screen v="2560 1440 483 17 1752 1401 0 0 N 0 0 0 0 1379 990 0"/>
-				<mdistate v="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"/>
+				<mdistate v="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"/>
 				<debug_layout version="1" state="N" fullscreen="0">
 					<toolwindowinfo>
 						<p n="_tbannotations_browser_form" f="0"/>
@@ -1319,87 +1319,87 @@
 			</monitor_config>
 		</monitor_configs>
 		<cwd v="..\ExpandableExmpl.prj"/>
-		<buffer bn="..\ExpandableExmpl.prj\StoreP.h" dn="" mtn="">
-			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".363" cl="1" le="0" cx="0" cy="24" wi="5" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</buffer>
 		<buffer bn="..\..\Library\Library\IterT.h" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".2846" cl="46" le="0" cx="45" cy="1" wi="5" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2846" cl="46" le="0" cx="45" cy="1" wi="5" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\..\Library\Library\ExpandableP.h" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".9020" cl="1" le="0" cx="0" cy="13" wi="5" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".9020" cl="1" le="0" cx="0" cy="13" wi="5" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\..\Library\Library\Expandable.h" dn="" mtn="">
-			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".8840" cl="96" le="0" cx="95" cy="18" wi="5" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="86049376" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".8840" cl="96" le="0" cx="95" cy="18" wi="5" bi="3" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\ExpandableExmpl.prj\ExpandableExmpl.rc" dn="" mtn="">
 			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="0" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="73" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".5660" cl="44" le="0" cx="43" cy="16" wi="5" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".5660" cl="44" le="0" cx="43" cy="16" wi="5" bi="4" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\ExpandableExmpl.prj\Store.h" dn="" mtn="">
-			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".1492" cl="13" le="0" cx="12" cy="9" wi="5" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</buffer>
-		<buffer bn="..\ExpandableExmpl.prj\StoreP.cpp" dn="" mtn="">
-			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".1137" cl="99" le="0" cx="98" cy="26" wi="5" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="32" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".1492" cl="13" le="0" cx="12" cy="9" wi="5" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\ExpandableExmpl.prj\ExpandableExmplDoc.cpp" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".36947" cl="33" le="0" cx="32" cy="23" wi="5" bi="3" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".36947" cl="33" le="0" cx="32" cy="23" wi="5" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\ExpandableExmpl.prj\Store.cpp" dn="" mtn="">
 			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".1638" cl="1" le="0" cx="0" cy="15" wi="5" bi="4" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".1638" cl="1" le="0" cx="0" cy="15" wi="5" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</buffer>
+		<buffer bn="..\ExpandableExmpl.prj\StoreP.cpp" dn="" mtn="">
+			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".1137" cl="99" le="0" cx="98" cy="26" wi="5" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</buffer>
+		<buffer bn="..\ExpandableExmpl.prj\StoreP.h" dn="" mtn="">
+			<bi ma="1 110 1" tabs="" wws="1" iwt="" st="8" in="1" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="0" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".363" cl="1" le="0" cx="0" cy="24" wi="5" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<buffer bn="..\README.md" dn="" mtn="">
-			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="8" in="2" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="85983776" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="2" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
-			<view ln=".14183" cl="10" le="0" cx="9" cy="24" wi="5" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<bi ma="1 74 1" tabs="2 " wws="1" iwt="" st="8" in="2" bw="0" us="32000" ro="0" se="1" sn="0" bin="0" mn="" hm="0" mf="87032352" tl="0" mll="0" ase="0" lnl="1" lcf="0" caps="0" e="0" esbu2="-1" clb="" clm="" sc="" sce="" scu="" alm="0" fwrm="0" hmre="0" hmrbw="0" spcwt="" swf="2" sm="" ldf="42" stat="" bfont="" mfont="" df="1024" sco="" of=""/>
+			<view ln=".14279" cl="10" le="0" cx="9" cy="24" wi="5" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</buffer>
 		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="8" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\..\Library\Library\IterT.h" dn="" mtn=""/>
-			<view ln=".2846" cl="46" le="0" cx="45" cy="1" wi="16" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".2846" cl="46" le="0" cx="45" cy="1" wi="13" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="1" width="1377" height="460" icon_x="0" icon_y="0" state="N" wf="0" wt="5" font_info=",,," did="0" mi="*,,," pi="0">
+		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="5" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\..\Library\Library\ExpandableP.h" dn="" mtn=""/>
-			<view ln=".9020" cl="1" le="0" cx="0" cy="13" wi="19" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".9020" cl="1" le="0" cx="0" cy="13" wi="16" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="1" width="1377" height="460" icon_x="0" icon_y="0" state="N" wf="0" wt="6" font_info=",,," did="0" mi="*,,," pi="0">
-			<buffer bn="..\..\Library\Library\Expandable.h" dn="" mtn=""/>
-			<view ln=".8840" cl="96" le="0" cx="95" cy="18" wi="22" bi="1" ht="0" hn="0" hf="0" hc="4" hb="4"/>
-		</window>
-		<window x="1" y="1" width="1377" height="460" icon_x="0" icon_y="0" state="N" wf="0" wt="10" font_info="Consolas,12,0,1" did="0" mi="*,,," pi="0">
+		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="10" font_info="Consolas,12,0,1" did="0" mi="*,,," pi="0">
 			<buffer bn="..\ExpandableExmpl.prj\ExpandableExmpl.rc" dn="" mtn=""/>
-			<view ln=".5660" cl="44" le="0" cx="43" cy="16" wi="25" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".5660" cl="44" le="0" cx="43" cy="16" wi="22" bi="4" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<window x="1" y="1" width="1377" height="460" icon_x="0" icon_y="0" state="N" wf="0" wt="3" font_info=",,," did="0" mi="*,,," pi="1">
+		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="3" font_info=",,," did="0" mi="*,,," pi="1">
 			<buffer bn="..\ExpandableExmpl.prj\Store.h" dn="" mtn=""/>
-			<view ln=".1492" cl="13" le="0" cx="12" cy="9" wi="28" bi="2" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".1492" cl="13" le="0" cx="12" cy="9" wi="25" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="7" font_info=",,," did="0" mi="*,,," pi="2">
 			<buffer bn="..\ExpandableExmpl.prj\ExpandableExmplDoc.cpp" dn="" mtn=""/>
-			<view ln=".36947" cl="33" le="0" cx="32" cy="23" wi="34" bi="3" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".36947" cl="33" le="0" cx="32" cy="23" wi="28" bi="6" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="11" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\ExpandableExmpl.prj\Store.cpp" dn="" mtn=""/>
-			<view ln=".1638" cl="1" le="0" cx="0" cy="15" wi="37" bi="4" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".1638" cl="1" le="0" cx="0" cy="15" wi="31" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="9" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\ExpandableExmpl.prj\StoreP.cpp" dn="" mtn=""/>
-			<view ln=".1137" cl="99" le="0" cx="98" cy="26" wi="31" bi="5" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".1137" cl="99" le="0" cx="98" cy="26" wi="34" bi="8" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="1" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="4" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\ExpandableExmpl.prj\StoreP.h" dn="" mtn=""/>
-			<view ln=".363" cl="1" le="0" cx="0" cy="24" wi="13" bi="7" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".363" cl="1" le="0" cx="0" cy="24" wi="37" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+		</window>
+		<window x="1" y="31" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="6" font_info=",,," did="0" mi="*,,," pi="0">
+			<buffer bn="..\..\Library\Library\Expandable.h" dn="" mtn=""/>
+			<view ln=".8840" cl="96" le="0" cx="96" cy="18" wi="19" bi="3" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
 		<window x="1" y="31" width="1377" height="958" icon_x="0" icon_y="0" state="N" wf="0" wt="2" font_info=",,," did="0" mi="*,,," pi="0">
 			<buffer bn="..\README.md" dn="" mtn=""/>
-			<view ln=".14183" cl="10" le="0" cx="10" cy="24" wi="40" bi="9" ht="0" hn="0" hf="0" hc="4" hb="4"/>
+			<view ln=".10021" cl="1" le="0" cx="1" cy="24" wi="40" bi="10" ht="0" hn="0" hf="0" hc="4" hb="4"/>
 		</window>
-		<mdistate v="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"/>
+		<mdistate v="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"/>
 		<filehist>
 			<p n="..\ExpandableExmpl.prj\ExpandableExmplDoc.cpp"/>
 			<p n="..\ExpandableExmpl.prj\StoreP.h"/>

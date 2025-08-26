@@ -27,6 +27,7 @@ ExpandableP vector.
 Expandable produces a vector of objects.  The first step is to create an object, then create a
 vector of them:
 
+```
   #include "Expanable.h"
 
   class Datum {
@@ -40,9 +41,11 @@ vector of them:
   Vector b;
   Datum  dtm;
   Datum* p;
+```
 
 Now the data is defined what can be done with it?  Here are some examples of things:
 
+```
   a.clear();                    // Vector a is cleared (i.e. all objects are destructed)
 
   n = a.end();                  // The number of occupied elements in the vector
@@ -66,10 +69,12 @@ Now the data is defined what can be done with it?  Here are some examples of thi
   a.pop(dtm);                   // Pop object from end of vector (removing object from the vector)
   a.del(i);                     // Delete object (i.e. destruct it) and remove it from the vector
                                 // and adjust the vector to fill in the empty spot
+```
 
 In addition to the above operations the vector should be searchable and sortable.  Adding the
 following boolean operations to support operations on the vector:
 
+```
   Note below KeyType is either a class, struct, typedef or c/c++ type that provides all 6 boolean
   operations.
 
@@ -97,21 +102,25 @@ following boolean operations to support operations on the vector:
                                 // key
   p = a.bSearcy(key);           // Return a pointer to an object is based on a binary search of
                                 // the sorted vector (won't work if vector not sorted on key)
+```
 
 The following operations supplied with Expandable are on the whole vector.
 
+```
   b = a;                        // Copy the vector a to the vector b, the original contents of b
                                 // are deleted (i.e. destructed).  The vector a is unaffected.
   b += a;                       // Append the vector a to the vector b.  The vector a is
                                 // unaffected.
   b -= a;                       // Move the contents of vector a to vector b.  The original
                                 // contents of be are deleted (i.e. destructed).
+```
 
 ## ExpandableP
 
 ExpandableP is a bit harder to create because it needs a pointer class to do a lot of the work.
 Fortunately, the pointer class is a template also.  Here is a declaration of an ExpandableP vector:
 
+```
   typedef DatumPtrT<  Datum, KeyType>            DatumP;         // Define pointer structure
   typedef ExpandableP<Datum, KeyType, DatumP, 2> VectorPData;    // Define array structure
 
@@ -119,6 +128,7 @@ Fortunately, the pointer class is a template also.  Here is a declaration of an 
   VectorPData b;
   Datum       dtm;
   Datum*      p;
+```
 
 The operations on an Expandable vector appear in the ExpandableP vector with some subtle
 differences.  One of those differences is that we are dealing with allocated and deallocated
@@ -126,31 +136,39 @@ objects.  When an operation accepts a pointer it is assumed by the operation tha
 been allocated from the heap and just moves the pointer into the vector.  At that point the vector
 owns the object and it must not be deallocated outside of the vector.  Here is an example:
 
+```
   a += dtm;                     // Allocate an object and copy the data from dtm in the new object.
                                 // The new object is appended to the vector
   a += p;                       // The object pointer, p, is appended to the vector a.
+```
 
 There is another version of delete object due to the notion that sometimes a pointer is all that is
 available to specify the object to be deleted:
 
+```
   a.del(p);                     // Find object with address p, delete (and deallocate it also) and
                                 // adjust the vector to fill in the empty spot.
+```
 
 The Datum class for ExpanadbleP needs an additional assignment operator due to the use of pointers:
 
+```
   class Datum {
     ...
     Datum& operator= (Datum* dtm) {copy(*dtm);   return *this;}
     Datum& operator= (Datum& dtm) {copy(dtm);    return *this;}
     ...
     };
+```
 
 Due to the need for allocated objects, two functions have been added to allocate/deallocate
 objects.
 
+```
   p = a.allocate();             // Allocates an object, execute the constructor and return a
                                 // pointer to the object.
   a.deallocate(p);              // execute the destructor and "free" the object
+```
 
 ## Sorting an Expandable(P)
 
@@ -158,7 +176,9 @@ There is also a template for a sorting algorithm that combines qsort and insert 
 standard c/c++ vectors and it also works exactly the same way on an Executable(P) vector.  Here is
 an example of using qsort:
 
+```
   qsort(a[0], a[a.end()-1]);    // This works for both Expandable templates
+```
 
 ## Iterator
 
@@ -174,6 +194,7 @@ functions are needed.  They should be hidden also, so the best solution is to ma
 type a friend of the class holding the Expandable object.  Here is the pattern used to implement
 an Iterator:
 
+```
   #include "IterT.h"
 
   class Store;
@@ -199,10 +220,12 @@ an Iterator:
 
     friend typename StoreIter;
     };
+```
 
 So when a Store object is declared an Iterator on the data within the object is possible both
 within the object and external to the object.  Here is an example:
 
+```
   Store store;
 
   bool memble(TCchar* key) {
@@ -214,6 +237,7 @@ within the object and external to the object.  Here is an example:
       // dtm is a pointer to the objects stored in the data and when the last one is exceeded
       // dtm becomes zero which the for loop terminates it (zero is the universal false in c/c++).
       }
+```
 
 Look at the IterT.h templates to see the details of the incrementing from zero to n-1, decrementing
 from n-1 to 0, and removal of the node a specific point in the incrementing/decrementing.

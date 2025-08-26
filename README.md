@@ -164,9 +164,11 @@ The Datum class for ExpanadbleP needs an additional assignment operator due to t
 Due to the need for allocated objects, two functions have been added to allocate/deallocate
 objects.
 
+```
   p = a.allocate();             // Allocates an object, execute the constructor and return a
                                 // pointer to the object.
   a.deallocate(p);              // execute the destructor and "free" the object
+```
 
 ## Sorting an Expandable(P)
 
@@ -174,7 +176,9 @@ There is also a template for a sorting algorithm that combines qsort and insert 
 standard c/c++ vectors and it also works exactly the same way on an Executable(P) vector.  Here is
 an example of using qsort:
 
+```
   qsort(a[0], a[a.end()-1]);    // This works for both Expandable templates
+```
 
 ## Iterator
 
@@ -190,6 +194,7 @@ functions are needed.  They should be hidden also, so the best solution is to ma
 type a friend of the class holding the Expandable object.  Here is the pattern used to implement
 an Iterator:
 
+```
   #include "IterT.h"
 
   class Store;
@@ -215,10 +220,12 @@ an Iterator:
 
     friend typename StoreIter;
     };
+```
 
 So when a Store object is declared an Iterator on the data within the object is possible both
 within the object and external to the object.  Here is an example:
 
+```
   Store store;
 
   bool memble(TCchar* key) {
@@ -230,6 +237,7 @@ within the object and external to the object.  Here is an example:
       // dtm is a pointer to the objects stored in the data and when the last one is exceeded
       // dtm becomes zero which the for loop terminates it (zero is the universal false in c/c++).
       }
+```
 
 Look at the IterT.h templates to see the details of the incrementing from zero to n-1, decrementing
 from n-1 to 0, and removal of the node a specific point in the incrementing/decrementing.
